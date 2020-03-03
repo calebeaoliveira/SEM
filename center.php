@@ -2,7 +2,9 @@
 require_once ("conexao/banco.php");
 require_once ("seguranca.php");
 
-$sql = "select * from TB_MATERIAL";
+$sql = "select * 
+from TB_MATERIAL 
+inner join TB_TIPO on (TB_MATERIAL.TIP_CODIGO=TB_TIPO.TIP_CODIGO)";
 $sql = mysqli_query ($con, $sql) or die ("Erro na sql!");
 
 
@@ -150,7 +152,7 @@ $sql = mysqli_query ($con, $sql) or die ("Erro na sql!");
                   
                     <th scope="row"></th>
                     <td><?php echo $dados['MAT_DESCRICAO'];?></td>
-                    <td><?php echo $dados['MAT_TIPO'];?></td>
+                    <td><?php echo $dados['TIP_DESCRICAO'];?></td>
                     <td></td>
                   </tr>
                 <?php } ?>
